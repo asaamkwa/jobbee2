@@ -82,7 +82,15 @@ const jobSchema = new mongoose.Schema({
     applicantApplied : {
         type : [Object],
         select : false
+    },
+
+    //save the user that login to create this job, releaship 
+    user : {
+        type : mongoose.Schema.ObjectId,
+        ref : "User",
+        required : true
     }
+
 });
 
 

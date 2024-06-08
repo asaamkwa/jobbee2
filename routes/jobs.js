@@ -22,8 +22,8 @@ router.route("/jobs").get(getJobs);
 router.route("/job/new").post( isAuthenticatedUser, authorizeRoles('employeer', 'admin'), newJob);
 
 router.route("/job/:id")
-      .put(isAuthenticatedUser, updateJob)
-      .delete(isAuthenticatedUser, deleteJob);
+      .put(isAuthenticatedUser, authorizeRoles('employeer', 'admin'), updateJob)
+      .delete(isAuthenticatedUser, authorizeRoles('employeer', 'admin'), deleteJob);
 router.route("/job/:id/:slug").get(getJob);
 router.route("/stats/:topic").get(jobStats);
 
